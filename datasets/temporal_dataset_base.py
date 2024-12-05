@@ -110,9 +110,9 @@ class TemporalDatasetBase(data.Dataset):
             positions = np.stack([f["to_world"][:3, 3] for f in frame_list], axis=0)
             # make forward context
             for frame_idx in range(0, N - 1):
-                ref_pos = positions[frame_idx : frame_idx + 1]
+                ref_pos = positions[frame_idx:frame_idx + 1]
                 possible_source_pos = positions[
-                    frame_idx + 1 : min(frame_idx + 1 + self.forward_look_ahead, N)
+                    frame_idx + 1:min(frame_idx + 1 + self.forward_look_ahead, N)
                 ]
                 dist = np.linalg.norm(ref_pos - possible_source_pos, axis=1)
                 offset = np.argmin(np.abs(dist - self.nominal_forward_context_distance))
@@ -121,9 +121,9 @@ class TemporalDatasetBase(data.Dataset):
 
             # make backward context
             for frame_idx in range(1, N):
-                ref_pos = positions[frame_idx : frame_idx + 1]
+                ref_pos = positions[frame_idx:frame_idx + 1]
                 possible_source_pos = positions[
-                    max(frame_idx - self.backward_look_ahead, 0) : frame_idx
+                    max(frame_idx - self.backward_look_ahead, 0):frame_idx
                 ]
                 dist = np.linalg.norm(ref_pos - possible_source_pos, axis=1)
                 offset = np.argmin(np.abs(dist - self.nominal_backward_context_distance))

@@ -1,3 +1,6 @@
 [submodule "nvTorchCam"]
 	path = nvTorchCam
-	url = git@github.com:NVlabs/nvTorchCam.git
+	url = https://github.com/NVlabs/nvTorchCam.git
+[submodule "externals/nvdiffrast"]
+	path = externals/nvdiffrast
+	url = https://github.com/NVlabs/nvdiffrast.git
